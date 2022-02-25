@@ -13,6 +13,7 @@ public class Main
         Boolean playerA = false;
         Boolean playerB = false;
         Boolean donePlaying = true;
+        Boolean donePlayingMistake = true;
 
         // After Playing once and deciding to play again, If you enter an invalid move it will correctly output that
         // your move is invalid. However, the code will then use the previous game's correct input instead of looping
@@ -119,26 +120,27 @@ public class Main
                     System.out.println("Scissors vs Scissors. It's a tie!");
                 }
             }
-
-            System.out.print("Would you like to play again? [Y/N]: ");
-
-            if(in.hasNextLine())
+            do
             {
-                PlayAgain = in.nextLine();
-                if (PlayAgain.equalsIgnoreCase("Y"))
-                {
-                    donePlaying = false;
-                }
-                else if (PlayAgain.equalsIgnoreCase("N"))
-                {
-                    System.out.println("Thank you for playing");
-                    donePlaying = true;
-                }
-                else
-                {
-                    System.out.println("Please enter either Y/N");
-                }
-            }
+                System.out.print("Would you like to play again? [Y/N]: ");
+
+                    PlayAgain = in.nextLine();
+                    if (PlayAgain.equalsIgnoreCase("Y"))
+                    {
+                        donePlaying = false;
+                        donePlayingMistake = false;
+                    }
+                    else if (PlayAgain.equalsIgnoreCase("N"))
+                    {
+                        System.out.println("Thank you for playing");
+                        donePlaying = true;
+                    }
+                    else
+                    {
+                        System.out.println("Please enter either Y/N");
+                        donePlayingMistake = true;
+                    }
+            }while(donePlayingMistake);
         }while(!donePlaying);
 
     }
